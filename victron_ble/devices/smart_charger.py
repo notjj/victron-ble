@@ -1,5 +1,3 @@
-from typing import Optional
-
 from victron_ble.devices.base import (
     BitReader,
     ChargerError,
