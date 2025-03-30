@@ -1,4 +1,5 @@
-update: add support Blue Smart IP65 Charger
+> [!NOTE]
+> This is a fork of @keshavdv/victron-ble with changes integrated to allow Blue Smart Chargers to work.
 
 
 # victron_ble

@@ -35,7 +35,6 @@ class SmartChargerData(DeviceData):
         return self._data["battery_charging_current"]
 
 
-
 class SmartCharger(Device):
     data_type = SmartChargerData
 
@@ -52,8 +51,7 @@ class SmartCharger(Device):
         battery_voltage = reader.read_signed_int(13)
         # Battery charging Current reading in 0.1A increments
         battery_charging_current = reader.read_signed_int(11)
-        
-        
+
         return {
             "charge_state": (
                 OperationMode(charge_state) if charge_state != 0xFF else None
@@ -69,5 +67,4 @@ class SmartCharger(Device):
                 if battery_charging_current != 0x7FFF
                 else None
             ),
-
         }

@@ -17,9 +17,9 @@ from victron_ble.devices.smart_battery_protect import (
     SmartBatteryProtect,
     SmartBatteryProtectData,
 )
+from victron_ble.devices.smart_charger import SmartCharger, SmartChargerData
 from victron_ble.devices.smart_lithium import SmartLithium, SmartLithiumData
 from victron_ble.devices.solar_charger import SolarCharger, SolarChargerData
-from victron_ble.devices.smart_charger import SmartCharger, SmartChargerData
 from victron_ble.devices.vebus import VEBus, VEBusData
 
 __all__ = [
