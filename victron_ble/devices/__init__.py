@@ -59,7 +59,6 @@ __all__ = [
 MODEL_PARSER_OVERRIDE: Dict[int, Type[Device]] = {
     0xA3A4: BatterySense,  # Smart Battery Sense
     0xA3A5: BatterySense,  # Smart Battery Sense
-    0xA339: SmartCharger,  # Blue Smart Charger IP65/67
 }
 
 
@@ -76,32 +75,32 @@ def detect_device_type(data: bytes) -> Optional[Type[Device]]:
         return match
 
     # Defaults
-    if mode == 0x2:  # BatteryMonitor
+    if mode == 0x1:  # SolarCharger
+        return SolarCharger
+    elif mode == 0x2:  # BatteryMonitor
         return BatteryMonitor
-    elif mode == 0xD:  # DcEnergyMeter
-        return DcEnergyMeter
-    elif mode == 0x8:  # AcCharger
-        pass
-    elif mode == 0x4:  # DcDcConverter
-        return DcDcConverter
     elif mode == 0x3:  # Inverter
         return Inverter
+    elif mode == 0x4:  # DcDcConverter
+        return DcDcConverter
+    elif mode == 0x5:  # SmartLithium (Lithium Battery Smart / LiFePO4 Battery Smart)
+        return SmartLithium
     elif mode == 0x6:  # InverterRS
         pass
+    elif mode == 0x7:  # GX Device
+	pass
+    elif mode == 0x8:  # AcCharger
+        return SmartCharger
+    elif mode == 0x9:  # SmartBatteryProtect
+        return SmartBatteryProtect
     elif mode == 0xA:  # LynxSmartBMS
         return LynxSmartBMS
     elif mode == 0xB:  # MultiRS
         pass
-    elif (
-        mode == 0x5
-    ):  # SmartLithium (commercially Lithium Battery Smart / LiFePO4 Battery Smart)
-        return SmartLithium
-    elif mode == 0x9:  # SmartBatteryProtect
-        return SmartBatteryProtect
-    elif mode == 0x1:  # SolarCharger
-        return SolarCharger
     elif mode == 0xC:  # VE.Bus
         return VEBus
+    elif mode == 0xD:  # DcEnergyMeter
+        return DcEnergyMeter
     elif mode == 0xF:  # Orion XS
         return OrionXS
 
