@@ -88,7 +88,7 @@ def detect_device_type(data: bytes) -> Optional[Type[Device]]:
     elif mode == 0x6:  # InverterRS
         pass
     elif mode == 0x7:  # GX Device
-	pass
+        pass
     elif mode == 0x8:  # AcCharger
         return SmartCharger
     elif mode == 0x9:  # SmartBatteryProtect
